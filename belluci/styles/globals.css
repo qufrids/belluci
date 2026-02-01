@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-brand-black: #070707;
+    --color-brand-cream: #F1EEE8;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-brand-black text-brand-cream antialiased;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+
+  ::selection {
+    @apply bg-brand-cream text-brand-black;
+  }
+
+  /* Subtle focus states */
+  :focus-visible {
+    @apply outline-none ring-1 ring-brand-cream-50 ring-offset-2 ring-offset-brand-black;
+  }
+
+  /* Remove default focus for mouse users */
+  :focus:not(:focus-visible) {
+    @apply outline-none ring-0;
+  }
+}
+
+@layer components {
+  .container-content {
+    @apply mx-auto max-w-content px-6;
+  }
+
+  .section-padding {
+    @apply py-section-y-mobile md:py-section-y lg:py-section-y-lg;
+  }
+
+  .border-subtle {
+    @apply border-brand-cream-08;
+  }
+
+  .text-muted {
+    @apply text-brand-cream-70;
+  }
+
+  /* Editorial text styling */
+  .editorial-heading {
+    @apply font-serif text-display-sm md:text-display lg:text-display-lg tracking-tight;
+  }
+
+  .editorial-subheading {
+    @apply font-serif text-heading md:text-display-sm;
+  }
+
+  .editorial-body {
+    @apply font-sans text-body-lg text-brand-cream-70 leading-relaxed;
+  }
+
+  /* Button variants */
+  .btn-text {
+    @apply font-sans text-body-sm uppercase tracking-widest text-brand-cream
+           transition-opacity duration-300 hover:opacity-70;
+  }
+
+  .btn-bordered {
+    @apply font-sans text-body-sm uppercase tracking-widest text-brand-cream
+           border border-brand-cream-08 px-8 py-4
+           transition-all duration-300
+           hover:border-brand-cream-50 hover:bg-brand-cream-05;
+  }
+
+  .btn-primary {
+    @apply font-sans text-body-sm uppercase tracking-widest
+           bg-brand-cream text-brand-black px-8 py-4
+           transition-opacity duration-300 hover:opacity-90;
+  }
+
+  /* Link styling */
+  .link-underline {
+    @apply relative inline-block after:absolute after:bottom-0 after:left-0
+           after:h-px after:w-full after:bg-brand-cream-50
+           after:origin-right after:scale-x-0
+           after:transition-transform after:duration-300
+           hover:after:origin-left hover:after:scale-x-100;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
